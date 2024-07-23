@@ -1,0 +1,35 @@
+version: '2.6'
+
+services:
+  app:
+    #container_name: plugn-dashboard-ionic
+    image: node:14 
+    #-alpine
+    #build: .
+    environment:
+      - BRANCH=grid
+    command: sh -c "node build.js && npm install -g @ionic/cli && npm install -f && ionic serve --host=0.0.0.0"
+    #--configuration=docker --host=127.0.0.0 --port=8100 
+    
+    expose:
+      - 8100
+    ports:
+      - 8100:8100
+    extra_hosts:
+      - "localhost:127.0.0.0"  
+      - "localhost:0.0.0.0"  
+    working_dir: /app
+    volumes:
+      - ./:/app  
+      - ~/.gradle:/root/.gradle
+
+  #deploy:
+  #  image: nginx:alpine 
+  #  command: sh -c "cp /app/www /usr/share/nginx/html"
+  #  working_dir: /app
+  #  volumes:
+  #    - ./:/app  
+  #  ports:
+  #    - 80:80
+    
+

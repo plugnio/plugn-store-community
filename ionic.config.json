@@ -1,0 +1,7 @@
+{
+  "name": "plugn-store",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
